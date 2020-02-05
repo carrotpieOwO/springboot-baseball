@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cos.springboot.repository.BBRepository">
+
+	<select id="findAll" resultType="com.cos.springboot.model.Team">
+		select * from Team order by
+		foundation
+	</select>
+
+	<select id="findByTeam"
+		resultType="com.cos.springboot.model.Player">
+		select * from Player where teamId = #{id}
+	</select>
+
+	<select id="findByName"
+		resultType="com.cos.springboot.model.Detail">
+		select p.name, p.height, p.salary, t.name teamName from player p inner join team t on
+		p.teamId = t.id where p.id= #{id}
+	</select>
+
+</mapper>
